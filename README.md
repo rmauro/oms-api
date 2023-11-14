@@ -21,6 +21,8 @@ Get into the container:
 ```bash
 $ docker exec -it oms-api bash
 
+```
+
 Then
 ```bash
 # unit tests
