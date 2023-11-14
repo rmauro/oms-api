@@ -5,10 +5,14 @@ import { IProcessingRuleRepository } from '../domain/repository/IProcessingRuleR
 
 @Injectable()
 export class AddProcessingRuleUsecase {
-    constructor(private processingRuleRepository: IProcessingRuleRepository) {}
+  constructor(private processingRuleRepository: IProcessingRuleRepository) {}
 
-    async execute(actions: string[], name: string, description: string): Promise<void> {
-        let processingRule: IProcessingRule = {actions, name, description};
-        this.processingRuleRepository.insert(processingRule);
-    }
+  async execute(
+    actions: string[],
+    name: string,
+    description: string,
+  ): Promise<void> {
+    const processingRule: IProcessingRule = { actions, name, description };
+    this.processingRuleRepository.insert(processingRule);
+  }
 }

@@ -1,3 +1,3 @@
 export interface IDatabaseConfig {
-    getDatabaseURL(): string;
+  getDatabaseURL(): string;
 }

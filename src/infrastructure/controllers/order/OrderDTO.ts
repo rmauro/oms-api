@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsBoolean, IsNotEmpty, IsNumber, IsString } from 'class-validator';
+import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
 
 export class AddOrderDto {
   @ApiProperty({ required: true })
@@ -13,13 +13,13 @@ export class AddOrderDto {
 
   @ApiProperty({ required: false })
   @IsString()
-  readonly description: string
+  readonly description: string;
 
   @ApiProperty({ required: false })
   @IsString()
-  readonly customer_id: string
+  readonly customer_id: string;
 
   @ApiProperty({ required: false })
   @IsNumber()
-  readonly amount: number
+  readonly amount: number;
 }

@@ -1,5 +1,10 @@
-import { Body, Controller, Delete, Get, Inject, ParseIntPipe, Post, Put, Query } from '@nestjs/common';
-import { ApiExtraModels, ApiResponse, ApiTags, ApiBody } from '@nestjs/swagger';
+import {
+  Body,
+  Controller,
+  Inject,
+  Post,
+} from '@nestjs/common';
+import { ApiTags, ApiBody } from '@nestjs/swagger';
 import { UseCaseProxy } from '../../usecases-proxy/usecases-proxy';
 import { UsecasesProxyModule } from '../../usecases-proxy/usecases-proxy.module';
 import { AddProcessingRuleUsecase } from '../../../usecases/AddProcessingRuleUsecase';
@@ -15,11 +20,13 @@ export class ProcessingRuleController {
 
   @Post('/')
   @ApiBody({
-     type: AddProcessingRuleDto,
-     description: 'JSON payload to create new Processing Rule',
+    type: AddProcessingRuleDto,
+    description: 'JSON payload to create new Processing Rule',
   })
   async addProcessingRule(@Body() addProcessingRuleDto: AddProcessingRuleDto) {
     const { actions, name, description } = addProcessingRuleDto;
-    return this.addProcessingRuleUsecaseProxy.getInstance().execute(actions, name, description);
+    return this.addProcessingRuleUsecaseProxy
+      .getInstance()
+      .execute(actions, name, description);
   }
 }

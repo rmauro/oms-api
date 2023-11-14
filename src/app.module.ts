@@ -7,7 +7,12 @@ import { RepositoryModule } from './infrastructure/repository/repository.module'
 import { UsecasesProxyModule } from './infrastructure/usecases-proxy/usecases-proxy.module';
 
 @Module({
-  imports: [DatabaseModule, RepositoryModule, UsecasesProxyModule.register(), ControllersModule],
+  imports: [
+    DatabaseModule,
+    RepositoryModule,
+    UsecasesProxyModule.register(),
+    ControllersModule,
+  ],
   controllers: [OrderController, ProcessingRuleController],
   providers: [],
 })

@@ -7,16 +7,15 @@ import { ORDER_MODEL } from '../constants';
 
 @Injectable()
 export class OrderRepository implements IOrderRepository {
-    constructor(
-        @Inject(ORDER_MODEL)
-        private orderModel: Model<IOrderDocument>,
-    ) {}
+  constructor(
+    @Inject(ORDER_MODEL)
+    private orderModel: Model<IOrderDocument>,
+  ) {}
 
-    async insert(orderData: IOrder): Promise<IOrderDocument> {
-        return this.orderModel.create({
-            ...orderData, 
-            processing_rule: new Types.ObjectId(orderData.processing_rule)
-        });
-    }
-
+  async insert(orderData: IOrder): Promise<IOrderDocument> {
+    return this.orderModel.create({
+      ...orderData,
+      processing_rule: new Types.ObjectId(orderData.processing_rule),
+    });
+  }
 }

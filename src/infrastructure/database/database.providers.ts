@@ -4,7 +4,7 @@ import { Config } from '../config/Config';
 
 export const databaseProviders = [
   {
-    inject: [ Config ],
+    inject: [Config],
     provide: DATABASE_CONNECTION,
     useFactory: (config: Config): Promise<typeof mongoose> =>
       mongoose.connect(config.getDatabaseURL()),

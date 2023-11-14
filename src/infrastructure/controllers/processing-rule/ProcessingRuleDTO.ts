@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsBoolean, IsNotEmpty, IsNumber, IsString } from 'class-validator';
+import { IsNotEmpty, IsString } from 'class-validator';
 
 export class AddProcessingRuleDto {
   @ApiProperty({ required: true })
@@ -12,5 +12,5 @@ export class AddProcessingRuleDto {
 
   @ApiProperty({ required: true })
   @IsString()
-  readonly description: string
+  readonly description: string;
 }

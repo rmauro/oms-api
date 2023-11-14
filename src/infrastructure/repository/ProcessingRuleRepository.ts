@@ -7,13 +7,12 @@ import { PROCESSING_RULE_MODEL } from '../constants';
 
 @Injectable()
 export class ProcessingRuleRepository implements IProcessingRuleRepository {
-    constructor(
-        @Inject(PROCESSING_RULE_MODEL)
-        private processingRuleModel: Model<IProcessingRuleDocument>,
-    ) {}
+  constructor(
+    @Inject(PROCESSING_RULE_MODEL)
+    private processingRuleModel: Model<IProcessingRuleDocument>,
+  ) {}
 
-    async insert(processingRule: IProcessingRule): Promise<void> {
-        this.processingRuleModel.create(processingRule);
-    }
-
+  async insert(processingRule: IProcessingRule): Promise<void> {
+    this.processingRuleModel.create(processingRule);
+  }
 }

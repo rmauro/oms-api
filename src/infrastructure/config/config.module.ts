@@ -3,11 +3,13 @@ import { ConfigModule } from '@nestjs/config';
 import { Config } from './Config';
 
 @Module({
-  imports: [ConfigModule.forRoot({
-    envFilePath: './.env',
-    ignoreEnvFile: process.env.NODE_ENV === 'prod',
+  imports: [
+    ConfigModule.forRoot({
+      envFilePath: './.env',
+      ignoreEnvFile: process.env.NODE_ENV === 'prod',
       isGlobal: true,
-  })],
+    }),
+  ],
   providers: [Config],
   exports: [Config],
 })
