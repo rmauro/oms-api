@@ -1,0 +1,51 @@
+version: "3.6"
+services:
+  oms-api:
+    container_name: oms-api
+    build:
+      dockerfile: Dockerfile
+      context: .
+    command: bash -c 'npm install && npm run start:dev'
+    tty: true
+    stdin_open: true
+    user: node
+    ports:
+      - "3000:3000"
+    networks:
+      - bhub-network
+    working_dir: /usr/src/app
+    links:
+      - bhub-mongodb
+    depends_on:
+      - bhub-mongodb
+    volumes:
+      - ./:/usr/src/app
+
+  bhub-mongodb:
+    image: mongo:5.0.22
+    container_name: bhub-mongodb
+    stdin_open: true
+    tty: true
+    ports:
+      - 27017:27017/tcp
+    networks:
+      - bhub-network
+    restart: always
+    environment:
+      - MONGODB_REPLICA_SET_MODE=primary
+      - MONGO_REPLICA_SET_MEMBERS=[{'_id':0,'host':'bhub-mongodb','priority':1}]
+        #volumes:
+      # the volume must be defined on the .env file
+      #- ./data:/data/db
+
+networks:
+  bhub-network:
+    name: bhub-network
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 22.22.1.0/24
+
+volumes:
+  mongodbdata:
+    name: mongodbdata
